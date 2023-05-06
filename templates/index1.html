@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Update Excel Values</title>
+</head>
+
+<body>
+    <h1>Update Excel Values</h1>
+    <form method="POST">
+        <label for="filename">File name:</label>
+        <input type="text" name="filename" id="filename"><br><br>
+        
+        <label for="f7">Longer clear span:</label>
+        <input type="text" name="f7"><br><br>
+
+        <label for="f9">Sorter clear span:</label>
+        <input type="text" name="f9"><br><br>
+
+        <label for="f11">Thickness of Slab:</label>
+        <input type="text" name="f11"><br><br>
+
+        <label for="f13">Total UDL:</label>
+        <input type="text" name="f13"><br><br>
+
+        <label for="f15">Support Condition:</label>
+        <select name="f15">
+            <option value="Interior Panel">Interior Panel</option>
+            <option value="One Short Edge Discontinuous">One Short Edge Discontinuous</option>
+            <option value="One Long Edge Discontinuous">One Long Edge Discontinuous</option>
+            <option value="Two Adjacent Edges Discontinuous">Two Adjacent Edges Discontinuous</option>
+            <option value="5 Two short edge disc.">5 Two short edge disc.</option>
+            <option value="6 Two long. edge disc.">6 Two long. edge disc.</option>
+            <option value="7 Three edge  disc.(one Long edge cont.)">7 Three edge disc.(one Long edge cont.)</option>
+            <option value="8 Three edge  disc.(one short edge cont.)">8 Three edge disc.(one short edge cont.)</option>
+            <option value="Four Edges Discontinuous">Four Edges Discontinuous</option>
+        </select><br><br>
+
+        <input type="submit" value="Update">
+    </form>
+</body>
+
+</html>
