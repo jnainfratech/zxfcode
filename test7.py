@@ -82,56 +82,82 @@ def home():
         width = float(f9_value)
         elevation = 0.25 # Set the elevation of the rectangle
 
-        # Create a rectangle
-        msp.add_lwpolyline([(0, 0, elevation), (length, 0, elevation), (length, width, elevation), (0, width, elevation), (0, 0, elevation)], dxfattribs={'elevation': elevation})
+        # # Create a rectangle
+        # msp.add_lwpolyline([(0, 0, elevation), (length, 0, elevation), (length, width, elevation), (0, width, elevation), (0, 0, elevation)], dxfattribs={'elevation': elevation})
 
-        msp.add_lwpolyline([(length/2, 0, elevation), (length/2, width/3, elevation)], dxfattribs={'elevation': 
-        elevation})
+        # msp.add_lwpolyline([(length/2, 0, elevation), (length/2, width/3, elevation)], dxfattribs={'elevation': 
+        # elevation})
 
-        msp.add_lwpolyline([(length, width/2, elevation), ((2/3)*length, width/2, elevation)], dxfattribs={'elevation': elevation})
+        # msp.add_lwpolyline([(length, width/2, elevation), ((2/3)*length, width/2, elevation)], dxfattribs={'elevation': elevation})
 
-        msp.add_lwpolyline([(0, width/2, elevation), (length/3, width/2, elevation)], dxfattribs={'elevation': elevation})
+        # msp.add_lwpolyline([(0, width/2, elevation), (length/3, width/2, elevation)], dxfattribs={'elevation': elevation})
 
-        msp.add_lwpolyline([(length/2, width, elevation), (length/2, (2/3)*width, elevation)], dxfattribs={'elevation': elevation})
+        # msp.add_lwpolyline([(length/2, width, elevation), (length/2, (2/3)*width, elevation)], dxfattribs={'elevation': elevation})
 
-        msp.add_leader([(length/6, 0, elevation), (length/6, width, elevation)])
+        # msp.add_leader([(length/6, 0, elevation), (length/6, width, elevation)])
 
-        msp.add_leader([(0, width/6, elevation), (length, width/6, elevation)])
-
+        # msp.add_leader([(0, width/6, elevation), (length, width/6, elevation)])
 
         center = (0 , 0)
-        radius = 10.0
+        radius = 6000
         msp.add_circle(center, radius)
-    
-        # Add MTEXT to the rectangle
-        text = str(rod3) + ' dia @ ' + str(rod4)
-        location = (length/1.9, width/3.5, elevation)
-        style = 'Standard'
-        width = 1000
-        attachment_point = 5  # Middle center
-        msp.add_mtext(text, dxfattribs={
-            'insert': location,
-            'style': style,
-            'width': width, 
-            'char_height': 50,
-            'rotation': 90,
-            'attachment_point': attachment_point
-        })
 
-        # Add MTEXT to the rectangle
-        text = str(rod1) + ' dia @ ' + str(rod2)
-        location = (length/5, width/2, elevation)
-        style = 'Standard'
-        width = 1000
-        attachment_point = 5  # Middle center
-        msp.add_mtext(text, dxfattribs={
-            'insert': location,
-            'style': style,
-            'width': width, 
-            'char_height': 50,
-            'rotation': 0,
-            'attachment_point': attachment_point
-        })
+        center = (0 , 0)
+        radius_middle = 4000
+        msp.add_circle(center, radius_middle)
+
+        center = (0 , 0)
+        radius = 2000
+        msp.add_circle(center, radius)
+
+        # Number of circles to add
+        n = 6
+
+        # Radius of the small circles
+        radius_small = 600
+
+        half_radius = 3000
+
+        # Calculate the angle between each circle
+        angle = 2 * math.pi / n
+
+        # Add the small circles
+        for i in range(n):
+            # Calculate the center of the small circle
+            x = center[0] + half_radius * math.cos(i * angle)
+            y = center[1] + half_radius * math.sin(i * angle)
+            center_small = (x, y)
+            msp.add_circle(center_small, radius_small)
+    
+        # # Add MTEXT to the rectangle
+        # text = str(rod3) + ' dia @ ' + str(rod4)
+        # location = (length/1.9, width/3.5, elevation)
+        # style = 'Standard'
+        # width = 1000
+        # attachment_point = 5  # Middle center
+        # msp.add_mtext(text, dxfattribs={
+        #     'insert': location,
+        #     'style': style,
+        #     'width': width, 
+        #     'char_height': 50,
+        #     'rotation': 90,
+        #     'attachment_point': attachment_point
+        # })
+
+        # # Add MTEXT to the rectangle
+        # text = str(rod1) + ' dia @ ' + str(rod2)
+        # location = (length/5, width/2, elevation)
+        # style = 'Standard'
+        # width = 1000
+        # attachment_point = 5  # Middle center
+        # msp.add_mtext(text, dxfattribs={
+        #     'insert': location,
+        #     'style': style,
+        #     'width': width, 
+        #     'char_height': 50,
+        #     'rotation': 0,
+        #     'attachment_point': attachment_point
+        # })
 
         # Save the DXF file
         doc.saveas('slab.dxf')
