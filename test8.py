@@ -13,7 +13,7 @@ List2 = [0,300,250,225,200,300,175,250,150,225,300,200,125,175,250,100,225,150,2
 List3 = [0,1.67,2,2.23,2.51,2.61,2.87,3.14,3.34,3.48,3.76,3.92,4.01,4.48,4.52,5.02,5.02,5.23,5.65,6.28,6.45,6.69,7.53,7.85,8.03,8.93,9.04,10.04,10.46,10.46,11.3,11.48,12.56,13.39,13.95,15.07,15.7,16.07,16.35,17.94,19.62,20.09,20.93,21.8,24.53,25.12,26.79,28.03,31.4,32.7,39.25,41.86,49.06,65.41]
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/check', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
         # Get the form values
@@ -24,7 +24,7 @@ def home():
         f15_value = request.form['f15']
 
         # Open the Excel workbook and select the active sheet
-        wb = xw.Book('D:\Mohit\slab\slabworking.xlsx')
+        wb = xw.Book('home/bhuvnesh/office/zxfcode/slab/slabworking.xlsx')
         sht = wb.sheets.active
 
         # Update the cell values
@@ -73,7 +73,7 @@ def home():
                 break
 
         # Save the workbook
-        wb.save('D:\Mohit\slab\slabworking.xlsx')
+        wb.save('/home/bhuvnesh/office/zxfcode/slab/slabworking.xlsx')
 
         length = float(f7_value)
         width = float(f9_value)
